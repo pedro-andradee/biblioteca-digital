@@ -12,7 +12,8 @@ import { ExchangeRequestModule } from './modules/exchange-request/exchange.reque
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
+    MongooseModule.forRoot('mongodb+srv://bibliotecaadmin:tco9fQGQZJqX2SHy@biblioteca-digital.esdzaig.mongodb.net/?retryWrites=true&w=majority&appName=biblioteca-digital'), // Default connection for local testing
+    /* ConfigModule.forRoot({
       load: [databaseConfig],
       isGlobal: true,
       envFilePath: '.env',
@@ -23,12 +24,12 @@ import { ExchangeRequestModule } from './modules/exchange-request/exchange.reque
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         const uri = configService.get<string>('database.uri');
-        console.log('Mongo URI from env:', uri); // Verifique o valor aqui
+        console.log('Mongo URI from env:', uri);
         return {
           uri,
         };
       },
-    }),
+    }), */
     UsersModule,
     BooksModule,
     ReviewsModule,
